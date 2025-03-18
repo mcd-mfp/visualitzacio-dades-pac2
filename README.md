@@ -1,2 +1,6 @@
-# visualitzacio-dades-pac2
-PAC2 de l'assignatura Visualització de dades de la UOC
+<img src='/images/uoc_masterbrand_3linies_positiu.png' width='250px'>
+
+# Màster de Ciència de dades <br /> Visualització de dades
+# PAC 2
+## Autor
+Manuel Fornos Perez
