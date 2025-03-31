@@ -3,16 +3,23 @@
 # Màster de Ciència de dades <br /> M2.959 Visualització de dades
 # PAC 2 - Tècniques de visualització
 
-## Visualitzacions
+## Tècniques
 
-Les visualitzacions s'han creat mitjançant el llenguatge R.
+Les visualitzacions en format HTML s'han creat mitjançant el llenguatge R.
 
-#### 1. [Heatmap](https://mcd-mfp.github.io/visualitzacio-dades-pac2/viz/heatmap.html)
+#### 1. Heatmap
+* [Notebook R](https://github.com/mcd-mfp/visualitzacio-dades-pac2/blob/main/src/heatmap/heatmap.Rmd)
+* [Visualització (HTML)](https://mcd-mfp.github.io/visualitzacio-dades-pac2/viz/heatmap.html)
 
-#### 2. [Gantt chart](https://mcd-mfp.github.io/visualitzacio-dades-pac2/viz/gantt.html)
+#### 2. Gantt chart
+* [Notebook R](https://github.com/mcd-mfp/visualitzacio-dades-pac2/blob/main/src/gantt/gantt.Rmd)
+* [Visualització (HTML)](https://mcd-mfp.github.io/visualitzacio-dades-pac2/viz/gantt.html)
 
-#### 3. [Horizon graph](https://mcd-mfp.github.io/visualitzacio-dades-pac2/viz/horizon.html)
 
+#### 3. Horizon graph
+
+* [Notebook R](https://github.com/mcd-mfp/visualitzacio-dades-pac2/blob/main/src/horizon/horizon.Rmd)
+* [Visualització (HTML)](https://mcd-mfp.github.io/visualitzacio-dades-pac2/viz/horizon.html)
 
 ## Autor
-Manuel Fornos Perez
+Manuel Fornos Pérez
