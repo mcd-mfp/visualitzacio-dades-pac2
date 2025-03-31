@@ -1,0 +1,72 @@
+---
+title: "M2.959 - Visualització de dades - PAC 2"
+output: html_document
+---
+
+---
+
+### **Autor:** Manuel Fornos Pérez
+
+--- 
+
+## <font color="darkblue">Tècnica de visualització: Gantt</font>
+
+<br>
+
+* **Font de les dades:** Universitat Oberta de Catalunya
+
+<br>
+
+```{r, message=FALSE, echo =FALSE, results='hide'}
+library(dplyr)
+library(lattice)
+library(latticeExtra)
+library(ggplot2)
+library(plan)
+
+Sys.setlocale("LC_ALL", "ca_ES.UTF-8")
+
+```
+
+```{r, echo = FALSE, fig.height=12, fig.width=18}
+par(mar = c(4, 4, 4, 4)) 
+
+g <- new("gantt")
+g <- ganttAddTask(g, "Visualització de dades")
+g <- ganttAddTask(g, "PAC 1","2025-03-03","2025-03-13",done=100 )
+g <- ganttAddTask(g, "PAC 2","2025-03-16","2025-04-03",done=100 )
+g <- ganttAddTask(g, "PAC 3","2025-05-04","2025-05-21",done=0 )
+g <- ganttAddTask(g, "Pràctica - Part 1","2025-04-06","2025-04-30",done=0 )
+g <- ganttAddTask(g, "Pràctica - Part 2","2025-05-24","2025-06-10",done=0 )
+g <- ganttAddTask(g, "Bases de dades no relacionals")
+g <- ganttAddTask(g, "PAC 1","2025-03-03","2025-03-23",done=100 )
+g <- ganttAddTask(g, "PAC 2","2025-03-31","2025-04-27",done=15 )
+g <- ganttAddTask(g, "Pràctica","2025-05-12","2025-06-15",done=0 )
+g <- ganttAddTask(g, "Deep Learning")
+g <- ganttAddTask(g, "PAC 1","2025-03-04","2025-03-25",done=100 )
+g <- ganttAddTask(g, "PAC 2","2025-04-01","2025-04-22",done=15 )
+g <- ganttAddTask(g, "PAC 3","2025-04-29","2025-05-20",done=0 )
+g <- ganttAddTask(g, "PAC 4","2025-05-21","2025-06-10",done=0 )
+g <- ganttAddTask(g, "PAC 5","2025-06-11","2025-06-24",done=0 )
+
+plot(g, 
+     ylabel=list(cex=ifelse(is.na(g[["start"]]), 1.4, 1.4), col=ifelse(is.na(g[["start"]]), "darkblue", "black"),font=ifelse(is.na(g[["start"]]), 2, 1)),
+     event.time="2025-04-03",
+     event.label="Avui",
+     col.event=c("red"),
+     col.done=c("lightgreen"),
+     col.notdone=c("lightgrey"),
+     line.main =1,
+     maiAdd = rep(1,4),
+     main = "Evaluació continua - 2on semestre del curs 24/25 \nMàster en Ciència de Dades (UOC) \n",
+     cex.main=2,
+     cex.axis=1.75,
+     cex.event=2,
+     time.format = "%d/%m") 
+
+legend(x=0.75, y=0.9, pch=22, pt.cex=2, cex=1.5, pt.bg=c("lightgreen","lightgrey"),
+     border="black", legend=c("Entrega finalitzada", "Entrega no finalitzada"), bg="white", xpd=TRUE)
+
+
+```
+

@@ -1,0 +1,81 @@
+---
+title: "M2.959 - Visualització de dades - PAC 2"
+output: html_document
+---
+
+---
+
+### **Autor:** Manuel Fornos Pérez
+
+--- 
+
+## <font color="darkblue">Tècnica de visualització: Heatmap</font>
+
+<br>
+
+* **Font de les dades:** [NOAA - National Centers for Environmental Information (Global time series)](https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/global/time-series)
+
+<br>
+
+
+```{r, message=FALSE, echo =FALSE, results='hide'}
+library(dplyr)
+library(tidyr)
+library(viridis)
+library(ggplot2)
+```
+
+
+```{r, message=FALSE, echo =FALSE, results='hide'}
+temp_data <- read.csv("data/temperature.csv", header = TRUE)
+
+temp_data <- temp_data %>%
+  mutate(Year = substr(Date, 1, 4),
+         Month = substr(Date, 5, 6)) %>%
+  select(Year, Month, Anomaly)
+```
+
+
+```{r, message=FALSE, echo =FALSE, results='hide'}
+temp_data <- temp_data %>% 
+  pivot_wider(names_from = "Month", values_from = "Anomaly")
+
+colnames(temp_data)[1:13] <- c("Any", "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", 
+           "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre")
+
+temp_data
+```
+
+```{r, fig.height=12, fig.width=16, message=FALSE, echo =FALSE, results='hide'}
+temp_data_long <- pivot_longer(temp_data, cols = -Any, names_to = "Mes", values_to = "Anomalia")
+
+temp_data_long$Mes <- factor(temp_data_long$Mes, 
+                             levels = c("Desembre", "Novembre", "Octubre", "Setembre", "Agost", "Juliol", 
+                                        "Juny", "Maig", "Abril", "Març", "Febrer", "Gener"))
+
+temp_data_long$Any <- as.integer(temp_data_long$Any)
+temp_data_long
+```
+
+
+```{r, fig.height=12, fig.width=16, message=FALSE, echo =FALSE, results='hide'}
+  
+ggplot(temp_data_long, aes(x = Any, y = Mes, fill = Anomalia)) + 
+  geom_tile()  +   
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_x_continuous(breaks = seq(1850, 2025, by = 15), expand = FALSE)+ 
+  scale_fill_gradient2(low = "#0083c1", high = "#ff0000") +
+  labs(title = "Anomalies de la temperatura mitjana global dels oceans (1850-2025)*  \n ",
+       x = "Any", y = "Mes", fill="Anomalia (˚C)") + 
+  theme(plot.title = element_text(size = 28),
+        axis.title.x = element_text(size = 22),
+        axis.title.y = element_text(size = 22),
+        axis.text.x = element_text(size = 18),
+        axis.text.y = element_text(size = 18)) +
+  coord_cartesian(ylim = c(12.5, 0.5) , expand = FALSE)+
+  theme(legend.text = element_text(size = 18),
+        legend.title = element_text(size = 22))
+```
+
+
+*Temperatura mitjana dels oceans 17˚C.

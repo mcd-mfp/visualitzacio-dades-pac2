@@ -1,0 +1,69 @@
+---
+title: "M2.959 - Visualització de dades - PAC 2"
+output: html_document
+---
+
+---
+
+### **Autor:** Manuel Fornos Pérez
+
+--- 
+
+## <font color="darkblue">Tècnica de visualització: Horizon</font>
+
+<br>
+
+* **Font de les dades:** [EUROSTAT - Unemployment by sex and age - Monthly data](https://ec.europa.eu/eurostat/databrowser/view/une_rt_m__custom_16037587/default/line?lang=en)
+
+
+<br>
+
+```{r, message=FALSE, echo =FALSE, results='hide'}
+library(dplyr)
+library(lattice)
+library(latticeExtra)
+```
+
+```{r, echo = FALSE}
+horizon_data <- read.csv("data/unemp_eu10.csv", header = TRUE)
+horizon_data <- horizon_data %>% select(geo, TIME_PERIOD, OBS_VALUE)
+colnames(horizon_data) <- c("country", "date", "value")
+horizon_data$date <- as.Date(paste0(horizon_data$date, "-01"))
+horizon_data$country <- factor(horizon_data$country, levels = c("Austria", "Ireland", "Sweden", "Belgium", "Poland", "Netherlands", "Spain", "Italy", "France", "Germany"))
+```
+
+```{r, echo = FALSE}
+horizon_data <- horizon_data %>% 
+  mutate(country = recode(country,
+                          "Austria" = "Àustria",
+                          "Ireland" = "Irlanda",
+                          "Sweden" = "Suècia",
+                          "Belgium" = "Bèlgica",
+                          "Poland" = "Polònia",
+                          "Netherlands" = "Països Baixos",
+                          "Spain" = "Espanya",
+                          "Italy" = "Itàlia",
+                          "France" = "França",
+                          "Germany" = "Alemanya"))
+```
+
+```{r, echo = FALSE, fig.height=20, fig.width=16}
+
+horizonplot(value ~ date | country,
+            horizon_data,
+            colorkey = list(TRUE, labels = list(cex=1.5)),
+            col.regions = c("#52899c", "#67adc5", "#77c9e6",
+                            "#f1948a", "#e74c3c", "#b03a2e"),
+            nbands=3L,
+            origin = 13.5, 
+            horizonscale = 4.5,
+            main = list("Evolució de la taxa de desocupació \nen els 10 principals països de la UE segons el seu PIB* (2000-2023)",cex=2.5),
+            ylab = list("Taxa de desocupació (%)",cex=2),
+            xlab = list("Any",cex = 2),
+            par.strip.text = list(cex = 1.5),
+            scales = list(x = list(relation = "same", axs = "i", draw = TRUE, tick.number = 10, cex=1.7))) 
+              
+#Molt bo, bo, acceptable, dolent, molt dolent, critic
+```
+
+*Producte interior brut actual.
