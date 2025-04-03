@@ -1,4 +1,4 @@
-<img src='/images/uoc_masterbrand_3linies_positiu.png' width='250px'>
+<img src='https://github.com/mcd-mfp/visualitzacio-dades-pac2/blob/main/images/uoc_masterbrand_3linies_positiu.png' width='250px'>
 
 # Màster de Ciència de dades <br /> M2.959 Visualització de dades
 # PAC 2 - Tècniques de visualització
