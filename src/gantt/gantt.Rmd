@@ -9,7 +9,7 @@ output: html_document
 
 --- 
 
-## <font color="darkblue">Tècnica de visualització: Gantt</font>
+## <font color="darkblue">Tècnica de visualització: Diagrama de Gantt</font>
 
 <br>
 
@@ -64,8 +64,8 @@ plot(g,
      cex.event=2,
      time.format = "%d/%m") 
 
-legend(x=0.75, y=0.9, pch=22, pt.cex=2, cex=1.5, pt.bg=c("lightgreen","lightgrey"),
-     border="black", legend=c("Entrega finalitzada", "Entrega no finalitzada"), bg="white", xpd=TRUE)
+legend(x=0.7, y=0.9, pch=22, pt.cex=2, cex=1.5, pt.bg=c("lightgreen","lightgrey"),
+     border="black", legend=c("Part de la proba acabada", "Part de la proba no acabada"), bg="white", xpd=TRUE)
 
 
 ```

@@ -9,7 +9,7 @@ output: html_document
 
 --- 
 
-## <font color="darkblue">Tècnica de visualització: Horizon</font>
+## <font color="darkblue">Tècnica de visualització: Gràfic Horizon</font>
 
 <br>
 
@@ -57,7 +57,7 @@ horizonplot(value ~ date | country,
             nbands=3L,
             origin = 13.5, 
             horizonscale = 4.5,
-            main = list("Evolució de la taxa de desocupació \nen els 10 principals països de la UE segons el seu PIB* (2000-2023)",cex=2.5),
+            main = list("Evolució de la taxa de desocupació \nen els 10 principals països de la UE segons el seu PIB* (2000-2025)",cex=2.5),
             ylab = list("Taxa de desocupació (%)",cex=2),
             xlab = list("Any",cex = 2),
             par.strip.text = list(cex = 1.5),
