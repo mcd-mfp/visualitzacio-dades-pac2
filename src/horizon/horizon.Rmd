@@ -63,7 +63,6 @@ horizonplot(value ~ date | country,
             par.strip.text = list(cex = 1.5),
             scales = list(x = list(relation = "same", axs = "i", draw = TRUE, tick.number = 10, cex=1.7))) 
               
-#Molt bo, bo, acceptable, dolent, molt dolent, critic
 ```
 
 *Producte interior brut actual.

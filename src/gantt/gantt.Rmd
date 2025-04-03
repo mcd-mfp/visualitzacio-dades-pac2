@@ -67,6 +67,5 @@ plot(g,
 legend(x=0.7, y=0.9, pch=22, pt.cex=2, cex=1.5, pt.bg=c("lightgreen","lightgrey"),
      border="black", legend=c("Part de la proba acabada", "Part de la proba no acabada"), bg="white", xpd=TRUE)
 
-
 ```
 

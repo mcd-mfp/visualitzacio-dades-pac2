@@ -43,7 +43,6 @@ temp_data <- temp_data %>%
 colnames(temp_data)[1:13] <- c("Any", "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", 
            "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre")
 
-temp_data
 ```
 
 ```{r, fig.height=12, fig.width=16, message=FALSE, echo =FALSE, results='hide'}
@@ -54,7 +53,6 @@ temp_data_long$Mes <- factor(temp_data_long$Mes,
                                         "Juny", "Maig", "Abril", "Març", "Febrer", "Gener"))
 
 temp_data_long$Any <- as.integer(temp_data_long$Any)
-temp_data_long
 ```
 
 
